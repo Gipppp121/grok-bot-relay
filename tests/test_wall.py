@@ -1,4 +1,4 @@
-"""The wall is the only HTML, and it is served from web/index.html."""
+"""The wall is the only HTML, served from docs/index.html."""
 
 from __future__ import annotations
 
@@ -18,10 +18,9 @@ REPO = Path(__file__).resolve().parents[1]
 
 class WallTests(unittest.TestCase):
     def test_pages_copy_matches_and_server_returns_it(self) -> None:
-        web = (REPO / "web" / "index.html").read_bytes()
         docs = (REPO / "docs" / "index.html").read_bytes()
-        self.assertEqual(web, docs)
-        self.assertIn(b"<title>grok bot</title>", web)
+        self.assertFalse((REPO / "web" / "index.html").exists())
+        self.assertIn(b"<title>grok bot</title>", docs)
         png = (REPO / "assets" / "wall.png").read_bytes()
         self.assertTrue(png.startswith(b"\x89PNG\r\n\x1a\n"))
         server = make_server("127.0.0.1", 0)
@@ -32,7 +31,7 @@ class WallTests(unittest.TestCase):
             with urllib.request.urlopen(f"http://127.0.0.1:{port}/") as response:
                 body = response.read()
             self.assertEqual(response.status, 200)
-            self.assertEqual(body, web)
+            self.assertEqual(body, docs)
         finally:
             server.shutdown()
             server.server_close()

@@ -50,7 +50,7 @@ The demo records a scripted yes for the buys that fit, through the same approval
 hourly 1176 vs relay 60
 ```
 
-`python -m relay wall` serves `web/index.html` at http://127.0.0.1:8000/ until you stop it. Press f in the page for fullscreen. The same file is copied to `docs/index.html` for GitHub Pages.
+`python -m relay wall` serves `docs/index.html` at http://127.0.0.1:8000/ until you stop it. Press f in the page for fullscreen. GitHub Pages serves that same file from `/docs`.
 
 ## Architecture
 
