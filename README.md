@@ -1,10 +1,8 @@
 # grok-bot-relay
 
+![grok-bot-relay](assets/banner.png)
+
 7 Grok Bots. 1 clock. Triggers on DONE.
-
-![Launch relay terminal wall](assets/wall.png)
-
-The terminal wall is an illustrative simulation with demo values.
 
 ## Why
 
@@ -13,6 +11,8 @@ Bots on hourly timers wake 1,176 times a week. This relay keeps one clock. Scout
 X reads stay inside 1,000 a day and 30 a minute, split across the bots. At the cap a bot writes STOP.
 
 Buyer is the only bot that spends. The cap is $40, and every buy needs a yes.
+
+![python -m relay run --demo](assets/demo.png)
 
 ## Bots
 
@@ -27,6 +27,12 @@ Buyer is the only bot that spends. The cap is $40, and every buy needs a yes.
 | Chief | Buyer DONE | Updates board.md, and prints a morning brief only when the ledger changed | 50 | 2 |
 
 ## Quick start
+
+Clone the repo, init a workspace, then run a fixed week or open the wall.
+
+![Launch relay terminal wall](assets/wall.png)
+
+The terminal wall is an illustrative simulation with demo values.
 
 ```bash
 git clone https://github.com/Gipppp121/grok-bot-relay.git
