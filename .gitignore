@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+*.egg-info/
+*.tmp
+
+# Workspace state created by `python -m relay init` and the demo.
+.relay/
+ledger.jsonl
+board.md
+approvals.json
+drafts/
+plans/
+ideas/
+pains/
+verdicts/
