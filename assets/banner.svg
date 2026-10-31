@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="grok-bot-relay">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="72%">
+      <stop offset="0%" stop-color="#141b24"/>
+      <stop offset="55%" stop-color="#0b0f14"/>
+      <stop offset="100%" stop-color="#05070a"/>
+    </radialGradient>
+    <radialGradient id="gScout" cx="32%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#e7f2ff"/>
+      <stop offset="26%" stop-color="#79b8ff"/>
+      <stop offset="100%" stop-color="#1f6feb"/>
+    </radialGradient>
+    <radialGradient id="gPain" cx="32%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#ffe7e5"/>
+      <stop offset="28%" stop-color="#ff8b82"/>
+      <stop offset="100%" stop-color="#d1242f"/>
+    </radialGradient>
+    <radialGradient id="gJudge" cx="32%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#f6edff"/>
+      <stop offset="30%" stop-color="#d2a8ff"/>
+      <stop offset="100%" stop-color="#8250df"/>
+    </radialGradient>
+    <radialGradient id="gBuilder" cx="32%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#e6ffed"/>
+      <stop offset="30%" stop-color="#56d364"/>
+      <stop offset="100%" stop-color="#1a7f37"/>
+    </radialGradient>
+    <radialGradient id="gPitch" cx="32%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#ffe8d6"/>
+      <stop offset="30%" stop-color="#f0883e"/>
+      <stop offset="100%" stop-color="#bc4c00"/>
+    </radialGradient>
+    <radialGradient id="gBuyer" cx="32%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#fff5d1"/>
+      <stop offset="32%" stop-color="#e3b341"/>
+      <stop offset="100%" stop-color="#9a6700"/>
+    </radialGradient>
+    <radialGradient id="gChief" cx="32%" cy="26%" r="78%">
+      <stop offset="0%" stop-color="#e4fbff"/>
+      <stop offset="30%" stop-color="#56d4dd"/>
+      <stop offset="100%" stop-color="#0f7a82"/>
+    </radialGradient>
+    <filter id="shadow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="10" stdDeviation="7" flood-color="#000000" flood-opacity="0.48"/>
+    </filter>
+    <clipPath id="cBlob">
+      <path d="M2,-52 C34,-54 56,-30 52,-2 C48,28 26,52 -2,52 C-32,52 -58,28 -54,-2 C-50,-34 -28,-52 2,-52 Z"/>
+    </clipPath>
+    <clipPath id="cSquare">
+      <rect x="-40" y="-40" width="80" height="80" rx="14"/>
+    </clipPath>
+    <clipPath id="cDiamond">
+      <rect x="-34" y="-34" width="68" height="68" rx="12" transform="rotate(45)"/>
+    </clipPath>
+    <clipPath id="cCapsule">
+      <rect x="-32" y="-50" width="64" height="100" rx="32"/>
+    </clipPath>
+    <clipPath id="cSphere">
+      <circle cx="0" cy="0" r="44"/>
+    </clipPath>
+    <clipPath id="cTriangle">
+      <polygon points="0,-56 56,44 -56,44"/>
+    </clipPath>
+    <clipPath id="cDome">
+      <path d="M-46,20 A46,50 0 0 1 46,20 L46,34 L-46,34 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1280" height="640" fill="none" stroke="#1c2430" stroke-width="2"/>
+
+  <text x="640" y="128" text-anchor="middle" fill="#f0f6fc" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="68" font-weight="700" letter-spacing="-1.4">grok-bot-relay</text>
+  <text x="640" y="174" text-anchor="middle" fill="#8b949e" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="22" font-weight="400">7 Grok Bots. 1 clock. Triggers on DONE.</text>
+  <rect x="600" y="196" width="80" height="3" rx="1.5" fill="#3fb950"/>
+
+  <!-- Scout, blob -->
+  <g transform="translate(140,372)">
+    <g filter="url(#shadow)" clip-path="url(#cBlob)">
+      <path d="M2,-52 C34,-54 56,-30 52,-2 C48,28 26,52 -2,52 C-32,52 -58,28 -54,-2 C-50,-34 -28,-52 2,-52 Z" fill="url(#gScout)"/>
+      <ellipse cx="-14" cy="-30" rx="28" ry="14" fill="#ffffff" opacity="0.42"/>
+    </g>
+    <ellipse cx="-13" cy="-6" rx="6.5" ry="9.5" fill="#0b0d10"/>
+    <ellipse cx="13" cy="-6" rx="6.5" ry="9.5" fill="#0b0d10"/>
+    <text x="0" y="96" text-anchor="middle" fill="#c9d1d9" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="15">Scout</text>
+  </g>
+
+  <!-- Pain Miner, square -->
+  <g transform="translate(310,372)">
+    <g filter="url(#shadow)" clip-path="url(#cSquare)">
+      <rect x="-40" y="-40" width="80" height="80" rx="14" fill="url(#gPain)"/>
+      <ellipse cx="-12" cy="-26" rx="26" ry="12" fill="#ffffff" opacity="0.4"/>
+    </g>
+    <ellipse cx="-13" cy="-6" rx="6.5" ry="9.5" fill="#0b0d10"/>
+    <ellipse cx="13" cy="-6" rx="6.5" ry="9.5" fill="#0b0d10"/>
+    <text x="0" y="96" text-anchor="middle" fill="#c9d1d9" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="15">Pain Miner</text>
+  </g>
+
+  <!-- Judge, diamond -->
+  <g transform="translate(480,372)">
+    <g filter="url(#shadow)" clip-path="url(#cDiamond)">
+      <rect x="-34" y="-34" width="68" height="68" rx="12" transform="rotate(45)" fill="url(#gJudge)"/>
+      <ellipse cx="-8" cy="-22" rx="22" ry="10" fill="#ffffff" opacity="0.4"/>
+    </g>
+    <ellipse cx="-11" cy="-8" rx="5.5" ry="8" fill="#0b0d10"/>
+    <ellipse cx="11" cy="-8" rx="5.5" ry="8" fill="#0b0d10"/>
+    <text x="0" y="96" text-anchor="middle" fill="#c9d1d9" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="15">Judge</text>
+  </g>
+
+  <!-- Builder, capsule -->
+  <g transform="translate(640,372)">
+    <g filter="url(#shadow)" clip-path="url(#cCapsule)">
+      <rect x="-32" y="-50" width="64" height="100" rx="32" fill="url(#gBuilder)"/>
+      <ellipse cx="-10" cy="-32" rx="22" ry="12" fill="#ffffff" opacity="0.42"/>
+    </g>
+    <ellipse cx="-12" cy="-10" rx="6" ry="9" fill="#0b0d10"/>
+    <ellipse cx="12" cy="-10" rx="6" ry="9" fill="#0b0d10"/>
+    <text x="0" y="96" text-anchor="middle" fill="#c9d1d9" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="15">Builder</text>
+  </g>
+
+  <!-- Pitch, sphere -->
+  <g transform="translate(800,372)">
+    <g filter="url(#shadow)" clip-path="url(#cSphere)">
+      <circle cx="0" cy="0" r="44" fill="url(#gPitch)"/>
+      <ellipse cx="-12" cy="-22" rx="24" ry="12" fill="#ffffff" opacity="0.45"/>
+    </g>
+    <ellipse cx="-13" cy="-4" rx="6.5" ry="9.5" fill="#0b0d10"/>
+    <ellipse cx="13" cy="-4" rx="6.5" ry="9.5" fill="#0b0d10"/>
+    <text x="0" y="96" text-anchor="middle" fill="#c9d1d9" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="15">Pitch</text>
+  </g>
+
+  <!-- Buyer, triangle -->
+  <g transform="translate(970,372)">
+    <g filter="url(#shadow)" clip-path="url(#cTriangle)">
+      <polygon points="0,-56 56,44 -56,44" fill="url(#gBuyer)"/>
+      <ellipse cx="-6" cy="-24" rx="18" ry="9" fill="#ffffff" opacity="0.4"/>
+    </g>
+    <ellipse cx="-10" cy="-14" rx="5.2" ry="7.4" fill="#0b0d10"/>
+    <ellipse cx="10" cy="-14" rx="5.2" ry="7.4" fill="#0b0d10"/>
+    <text x="0" y="96" text-anchor="middle" fill="#c9d1d9" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="15">Buyer</text>
+  </g>
+
+  <!-- Chief, dome -->
+  <g transform="translate(1140,372)">
+    <g filter="url(#shadow)" clip-path="url(#cDome)">
+      <path d="M-46,20 A46,50 0 0 1 46,20 L46,34 L-46,34 Z" fill="url(#gChief)"/>
+      <ellipse cx="-12" cy="-18" rx="24" ry="12" fill="#ffffff" opacity="0.42"/>
+    </g>
+    <ellipse cx="-12" cy="-8" rx="6" ry="8.5" fill="#0b0d10"/>
+    <ellipse cx="12" cy="-8" rx="6" ry="8.5" fill="#0b0d10"/>
+    <text x="0" y="96" text-anchor="middle" fill="#c9d1d9" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="15">Chief</text>
+  </g>
+
+  <g transform="translate(640,572)">
+    <rect x="-250" y="-24" width="500" height="48" rx="24" fill="#12181f" stroke="#30363d" stroke-width="1"/>
+    <text x="0" y="6" text-anchor="middle" font-family="JetBrains Mono, Cascadia Mono, DejaVu Sans Mono, monospace" font-size="16">
+      <tspan fill="#8b949e">hourly </tspan>
+      <tspan fill="#6e7681">1,176</tspan>
+      <tspan fill="#8b949e"> wakes/week  vs  relay </tspan>
+      <tspan fill="#3fb950" font-weight="700">60</tspan>
+    </text>
+  </g>
+</svg>
