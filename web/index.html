@@ -1,0 +1,81 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>grok bot</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;height:100%;overflow:hidden;background:#000;cursor:none}
+body{font-family:Menlo,"SF Mono",Monaco,ui-monospace,monospace;font-size:clamp(9px,0.85vw,13px);line-height:1.32;color:#c9d1d9}
+#wall{display:grid;width:100vw;height:100vh;grid-template-columns:42fr 33fr 25fr;grid-template-rows:45fr 55fr;gap:2px;background:#000}
+.w{background:#0d1117;border-radius:9px;overflow:hidden;display:flex;flex-direction:column;border:1px solid #30363d;min-height:0}
+#w1{grid-area:1/1}#w2{grid-area:2/1}#w5{grid-area:1/3}#w6{grid-area:2/3}
+#c2{grid-area:1/2/3/3;display:grid;grid-template-rows:40fr 60fr;gap:2px;min-height:0}
+.tb{height:1.9em;flex:none;background:linear-gradient(#2d2f33,#25272a);display:flex;align-items:center;justify-content:center;position:relative;color:#bfc3c8;font:600 0.95em -apple-system,"Helvetica Neue",sans-serif;border-bottom:1px solid #000}
+.tl{position:absolute;left:.7em;display:flex;gap:.45em}.tl i{width:.95em;height:.95em;border-radius:50%;display:block}
+.tl i:nth-child(1){background:#ff5f57}.tl i:nth-child(2){background:#febc2e}.tl i:nth-child(3){background:#28c840}
+.b{flex:1;padding:.35em .6em;overflow:hidden;white-space:pre;min-height:0;position:relative}
+.f{display:flex;flex-direction:column}.log{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}.log>div{flex:none}
+.p{background:#3fb950;color:#0d1117;padding:0 .3em}.hd{margin-bottom:.2em}
+.G{color:#3fb950}.R{color:#ff7b72}.Y{color:#e3b341}.B{color:#58a6ff}.C{color:#39c5cf}.U{color:#d2a8ff}.D{color:#7d8590}.DD{color:#3d444d}.W{color:#f0f6fc;font-weight:700}.O{color:#f0883e}
+.kG,.kR,.kY,.kB,.kD,.kC{color:#0d1117;padding:0 .3em}.kG{background:#3fb950}.kR{background:#ff7b72}.kY{background:#e3b341}.kB{background:#58a6ff}.kD{background:#484f58;color:#c9d1d9}.kC{background:#39c5cf}
+.ban{color:#f0f6fc;font-weight:700;line-height:1.0;font-size:1.3em;margin:.15em 0;letter-spacing:-.02em}
+.st{text-decoration:line-through}.big{font-weight:700;font-size:1.15em}
+</style></head><body><div id="wall">
+<div class="w" id="w1"><div class="tb"><div class="tl"><i></i><i></i><i></i></div>grok bot | launch board</div><div class="b" id="b1"></div></div>
+<div class="w" id="w2"><div class="tb"><div class="tl"><i></i><i></i><i></i></div>grok bot | trigger chain · tail -f</div><div class="b f"><div class="hd"><span class="p">grok bot</span> <span class="W">❯ trigger chain · tail -f</span></div><div class="D">TIME      EVENT     DETAIL                             RESULT</div><div class="log" id="l2"></div></div></div>
+<div id="c2">
+<div class="w"><div class="tb"><div class="tl"><i></i><i></i><i></i></div>grok bot | wake map · hourly → triggers</div><div class="b" id="b3"></div></div>
+<div class="w"><div class="tb"><div class="tl"><i></i><i></i><i></i></div>grok bot | builder · tests + PR checks</div><div class="b f"><div class="hd"><span class="p">grok bot</span> <span class="W">❯ builder · tests + PR checks</span></div><div class="log" id="l4"></div></div></div>
+</div>
+<div class="w" id="w5"><div class="tb"><div class="tl"><i></i><i></i><i></i></div>grok bot | buyer · domain watch</div><div class="b" id="b5"></div></div>
+<div class="w" id="w6"><div class="tb"><div class="tl"><i></i><i></i><i></i></div>grok bot | LEDGER · tail</div><div class="b f"><div class="hd"><span class="p">grok bot</span> <span class="W">❯ LEDGER · tail</span></div><div class="D">every bot appends one line · files, not email</div><div class="log" id="l6"></div></div></div>
+</div>
+<script>
+const NM=["Scout","Pain Miner","Judge","Builder","Pitch","Buyer","Chief"],CL=["B","R","U","G","O","Y","C"],
+FILE=["trending","pains","verdict","PR","pitch","cart","launch"],CAP=[300,300,150,50,150,0,50];
+let S=7*3600+2*60,rs=1;const R=()=>{rs=(rs*16807)%2147483647;return rs/2147483647},pick=a=>a[Math.floor(R()*a.length)],ri=(a,b)=>a+Math.floor(R()*(b-a+1));
+const pad=(s,n)=>(s+"").padEnd(n).slice(0,n),fmt=n=>n.toLocaleString("en-US");
+const ts=()=>{S+=ri(3,11);const h=Math.floor(S/3600)%100,m=Math.floor(S/60)%60,s=S%60;return "+"+[h,m,s].map(x=>(""+x).padStart(2,"0")).join(":")+"."+ri(0,9)};
+function mk(id,max){const el=document.getElementById(id);return{el,max,add(h){const d=document.createElement("div");d.innerHTML=h;el.appendChild(d);while(el.childNodes.length>max)el.removeChild(el.firstChild)}}}
+// state
+const use=[214,300,96,12,131,0,38],state=["DONE","STOP","DONE","WIP","DONE","WAIT","AWAKE"];let runs=55,avoid=772,reads=1040,cart=33,ver=14,idea=3,pr=16;
+const DOM=["launchrelay.com","launchrelay.dev","relaybots.io","getrelay.app","onebaton.co","relay.team","sevenbots.dev","dailybaton.ai"];
+const dp=DOM.map(()=>({p:ri(9,64),c:ri(1800,2900),s:"watch"}));dp[0].s="IN CART";dp[0].p=12;dp[4].s="IN CART";dp[4].p=21;dp[5].s="OVER CAP";
+const GL={G:[" ### ","#    ","# ###","#   #"," ### "],R:["#### ","#   #","#### ","#  # ","#   #"],O:[" ### ","#   #","#   #","#   #"," ### "],K:["#   #","#  # ","###  ","#  # ","#   #"]," ":["   ","   ","   ","   ","   "],B:["#### ","#   #","#### ","#   #","#### "],T:["#####","  #  ","  #  ","  #  ","  #  "]};
+const ban=[0,1,2,3,4].map(r=>[..."GROK BOT"].map(c=>GL[c][r].replace(/#/g,"█")).join(" ")).join("\n");
+function stK(s){return {DONE:"kG",STOP:"kR",WIP:"kB",WAIT:"kY",AWAKE:"kC",IDLE:"kD"}[s]}
+function draw1(){let h=`<div class="hd"><span class="p">grok bot</span> <span class="W">❯ launch board</span>                         <span class="D">sim week 1/7</span></div><div class="ban">${ban}</div><span class="C">launch team · 7 bots · 1 clock (Monday morning) · 6 triggers on DONE</span>\n\n<span class="D">HOURLY RUNS/WEEK   RELAY RUNS   EMPTY WAKES AVOIDED   X READS TODAY</span>\n<span class="DD big st">1,176</span>              <span class="G big">${pad("~"+runs,13)}</span><span class="W">${pad(fmt(avoid),22)}</span><span class="Y">${fmt(reads)}/1,000</span>\n<span class="D">by my math         </span><span class="G">−95% wakes</span>\n<span class="D">BOT            STATE      WORKING ON        X READS     WAKES</span>\n`;
+for(let i=0;i<7;i++){const s=state[i];h+=`<span class="${CL[i]}">▟█▙</span> ${pad(NM[i],10)} <span class="${stK(s)}">${pad(s,6)}</span>  ${pad(i==3?"PR #"+pr:FILE[i]+".md",16)}  <span class="${s=="STOP"?"R":"D"}">${pad(i==5?"0/0":use[i]+"/"+CAP[i],10)}</span>  ${i==0?"clock":"trigger"}\n`}
+h+=`<span class="kY"> $${cart} of $40 · WAITING ON YOU </span>\n<span class="D">rule: a bot starts only when the one before writes DONE · email handoffs off\nmoney: Buyer only · $40 cap · yes on every buy</span>`;document.getElementById("b1").innerHTML=h}
+let wk=Array(7).fill(0).map(()=>ri(20,44)),rem=861,left=322,empty=299;
+function draw3(){let h=`<div class="hd"><span class="p">grok bot</span> <span class="W">❯ wake map · hourly → triggers</span></div><span class="D">7 bots × 168 hours · 1 cell = 3h · </span><span class="DD">■ hourly wake</span> <span class="G">■ trigger wake</span>\n\n`;
+for(let i=0;i<7;i++){let row="";for(let c=0;c<28;c++){row+=(c%4==0&&c/4<wk[i]/6)?'<span class="G">■</span>':'<span class="DD">■</span>'}h+=`<span class="${CL[i]}">${pad(NM[i],11)}</span>${row} <span class="D">${wk[i]}/168</span>\n`}
+h+=`<span class="D">           Mon Tue Wed Thu Fri Sat Sun</span>\n\n<span class="D">hourly wakes removed</span> <span class="G">${rem}</span> <span class="D">of 1,176</span>\n<span class="D">wakes left          </span> <span class="W">${left}</span> <span class="D">1 clock + triggers</span>\n<span class="D">empty runs this week</span> <span class="R">${empty}</span>`;document.getElementById("b3").innerHTML=h}
+function draw5(){let h=`<div class="hd"><span class="p">grok bot</span> <span class="W">❯ buyer · domain watch</span></div><span class="D">watching registrars · Buyer is the only bot with a card\n\nDOMAIN            PRICE   CHECKS   STATUS</span>\n`;
+DOM.forEach((d,i)=>{const x=dp[i];h+=`${pad(d,17)} <span class="Y">${pad("$"+x.p,6)}</span>  <span class="D">${pad(x.c,7)}</span>  <span class="${x.s=="IN CART"?"kY":x.s=="OVER CAP"?"kR":"kD"}">${x.s}</span>\n`});
+h+=`\n<span class="D">CAP    CART   LEFT   BUYS WITHOUT YES</span>\n<span class="W">$40</span>    <span class="Y">$${cart}</span>    <span class="G">$${40-cart}</span>     <span class="G">0</span>\n\n<span class="kY"> $${cart} of $40 · WAITING ON YOU </span>\n<span class="D">no purchase until you say yes · 4 price checks/min</span>`;document.getElementById("b5").innerHTML=h}
+const L2=mk("l2",60),L4=mk("l4",60),L6=mk("l6",60);
+const ev2=[()=>`${ts()}  <span class="D">clock</span>     hourly :00 disabled                   <span class="kD">skip ×7</span>`,
+()=>{const i=ri(0,7);return `${ts()}  <span class="Y">price</span>     ${pad(DOM[i]+" $"+dp[i].p,33)}  <span class="Y">cart $${cart}/$40</span>`},
+()=>{const i=ri(0,5);return `${ts()}  <span class="C">fs.write</span>  ${pad("LEDGER ← "+NM[i]+" DONE "+FILE[i],33)}  <span class="kG">DONE</span>`},
+()=>{const i=ri(1,6);return `${ts()}  <span class="G">trigger</span>   ${pad("DONE seen → wake "+NM[i],33)}  <span class="G">OK</span>`},
+()=>`${ts()}  <span class="U">compose</span>   ${pad("launch section "+ri(1,12)+"/12",33)}  <span class="D">reads LEDGER</span>`,
+()=>`${ts()}  <span class="R">x.budget</span>  ${pad(pick(["Pain Miner 300/300","Scout 214/300","Pitch 131/150"]),33)}  <span class="R">STOP</span>`];
+const tests=["unit signup/handler.spec","unit ledger/append.spec","unit trigger/done.spec","unit budget/cap.spec","e2e  landing loads","e2e  waitlist submit","unit pricing/table.spec","e2e  og image renders","unit rate/limit.spec","unit xbudget/minute.spec"];
+let q4=[];function job4(){idea++;pr++;const f=R()<.35?ri(0,tests.length-1):-1;q4.push(`<span class="G">~/idea-${(""+idea).padStart(2,"0")}</span> <span class="W">❯ grok-bot builder --pr ${pr}</span>`,`<span class="D">reading LEDGER: Judge DONE verdict → build idea-${idea}</span>`);
+tests.forEach((t,i)=>q4.push(i==f?`<span class="kR">FAIL</span> ${pad(t,26)} <span class="R">expected 429, got 200</span>`:`<span class="kG">PASS</span> ${pad(t,26)} <span class="D">${(R()*1.2+.1).toFixed(1)}s</span>`));
+if(f>=0)q4.push(`<span class="Y">fix</span>  rate/limit: return 429 after 30 req/min`,`<span class="kG">PASS</span> ${pad(tests[f],26)} <span class="D">0.3s</span>`);
+q4.push(`<span class="D">${tests.length} passed · ${f>=0?1:0} fixed</span>`,`$ git push origin idea-${idea} → PR #${pr}`,`checks <span class="kG">lint</span> <span class="kG">unit</span> <span class="kG">e2e</span> <span class="kG">types</span>`,`<span class="G">✓ PR #${pr} all green → LEDGER ← Builder DONE PR #${pr} → wake Pitch</span>`,"")}
+function ev6(){const i=ri(0,6),a=pick(["WIP","WIP","WIP","DONE"]);const x=i==1&&R()<.2?`<span class="kR">STOP</span> x reads 300/300 cap`:i==5&&R()<.4?`<span class="kY">WAIT</span> you $${cart} of $40`:`<span class="${a=="DONE"?"kG":"kB"}">${a}</span> ${pad(i==3?"PR #"+pr:FILE[i]+".md",12)} <span class="D">+${ri(9,64)} lines</span>`;return `${ts()} <span class="${CL[i]}">${pad(NM[i],10)}</span> ${x}`}
+// prefill
+for(let i=0;i<60;i++){L2.add(pick(ev2)());L6.add(ev6())}job4();job4();job4();while(q4.length)L4.add(q4.shift());
+draw1();draw3();draw5();
+let last=performance.now(),a2=0,a4=0,a6=0,a1=0;
+function step(now){const dt=now-last;last=now;a2+=dt;a4+=dt;a6+=dt;a1+=dt;
+if(a2>260){a2=0;L2.add(pick(ev2)())}
+if(a4>140){a4=0;if(!q4.length)job4();L4.add(q4.shift())}
+if(a6>420){a6=0;L6.add(ev6())}
+if(a1>500){a1=0;const i=ri(0,6);if(state[i]!="STOP"&&i!=5)state[i]=pick(["DONE","WIP","DONE","AWAKE"]);if(R()<.15)state[1]=state[1]=="STOP"?"IDLE":"STOP";
+ if(use[i]<CAP[i])use[i]+=ri(0,3);reads=use.reduce((a,b)=>a+b,0)+ri(0,300);if(R()<.3)runs=ri(52,61);avoid+=ri(0,3);if(avoid>1116)avoid=772;
+ const d=ri(0,7);if(dp[d].s=="watch"){dp[d].p=Math.max(7,dp[d].p+ri(-3,3))}dp.forEach(x=>x.c+=ri(0,4));if(R()<.1)cart=pick([21,33,33,12]);
+ const w=ri(0,6);wk[w]=wk[w]>=60?ri(18,30):wk[w]+1;rem+=ri(0,2);if(rem>1116)rem=861;left=1176-rem-ri(0,5);empty=Math.max(0,empty-ri(0,1));if(empty<5)empty=299;
+ draw1();draw3();draw5()}
+requestAnimationFrame(step)}requestAnimationFrame(step);
+addEventListener("keydown",e=>{if(e.key=="f"||e.key=="F"){const d=document.documentElement;if(document.fullscreenElement||document.webkitFullscreenElement){(document.exitFullscreen||document.webkitExitFullscreen).call(document)}else{(d.requestFullscreen||d.webkitRequestFullscreen).call(d)}}});
+</script></body></html>

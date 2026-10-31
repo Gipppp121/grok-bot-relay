@@ -1,0 +1,42 @@
+# Launch relay config. Times are local time for the scheduler.
+# X reads: 1000 a day and 30 a minute, split across the 7 bots.
+
+[clock]
+weekday = "monday"
+hour = 9
+minute = 0
+
+[budget]
+daily_reads = 1000
+minute_reads = 30
+
+[budget.scout]
+daily = 300
+minute = 9
+
+[budget.pain_miner]
+daily = 300
+minute = 8
+
+[budget.judge]
+daily = 150
+minute = 4
+
+[budget.builder]
+daily = 50
+minute = 2
+
+[budget.pitch]
+daily = 150
+minute = 5
+
+[budget.buyer]
+daily = 0
+minute = 0
+
+[budget.chief]
+daily = 50
+minute = 2
+
+[buyer]
+cap_cents = 4000
