@@ -1,0 +1,4 @@
+# GitHub Linguist: keep the language bar on Python.
+# The wall page and the banner stay in the tree. They are not counted.
+*.html linguist-documentation linguist-vendored
+*.svg linguist-vendored
